@@ -1,25 +1,35 @@
 <?php
 chdir('../../../../');
 include('includes/application_top.php');
-//include('includes/modules/payment/payson.php');
+include('includes/modules/payment/payson.php');
 if ( strlen($_GET['TOKEN']) <= 0)
 {
    tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT)); 
 }
-$payson_payments_status = tep_db_query("SELECT payson_payments_status FROM payson_payments WHERE payson_payments_token = '" . $_GET['TOKEN'] . "'");
 
-if(tep_db_num_rows($payson_payments_status) == 0)
-{
-    tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT));
+$payson = new payson();
+
+$result = $payson->call_payson_api('PaymentDetails', array("token"    => $_GET['TOKEN']));
+
+$res_arr = explode("&",$result);
+$i=0;
+$ipn_status = '';
+while($i < sizeof($res_arr) ){
+    list($tag, $val) = explode("=", $res_arr[$i]);
+    if ($val == 'COMPLETED' || $val == 'PENDING' || $val == 'ERROR'){
+          $ipn_status = $val;
+            break;
+                    
+    }
+    $i++;    
 }
 
-
-$ipn_status = tep_db_fetch_array($payson_payments_status);
-switch($ipn_status['payson_payments_status']){
+switch($ipn_status){
     case 'COMPLETED':
     case 'PENDING':
-        unset($_SESSION[cart]);
-        tep_redirect(tep_href_link(FILENAME_CHECKOUT_SUCCESS));
+       // unset($_SESSION[cart]);
+        tep_redirect("../../../../" . FILENAME_CHECKOUT_PROCESS . '?token=' . $_GET['TOKEN'].'&type=TRANSFER');
+        
         break;
     case 'ERROR':
 paysonApiError('Payment denaid by Payson');
