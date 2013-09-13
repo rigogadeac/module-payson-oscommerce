@@ -39,7 +39,7 @@ class payson_payments_invoice
 		global $order, $currency;
 	
 	    $this->code             = 'payson_payments_invoice';
-		$this->module_version 	= '1.6';
+		$this->module_version 	= '1.7';
 		
 		
 		
