@@ -1,10 +1,14 @@
-https://www.payson.se/api/moduler
 
 Requirements: 
 
 * Curl
 
 Changes that has been made since last version.
+
+------------------------------------
+Date: 2013-09-13, Version: 1.7
+
+* Bugfix: Ipn-request 
 
 ------------------------------------
 Date: 2013-04-22, Version: 1.6
