@@ -51,8 +51,8 @@ class payson{
     	global $order, $currency;
      	    
         $this->code             = 'payson';
-		$this->module_version 	= '1.7';
-		$this->module_name = 'payson oscommerce 1.6';
+		$this->module_version 	= '1.8';
+		$this->module_name = 'payson oscommerce 1.8';
 
        	$this->title 			= 	MODULE_PAYMENT_PAYSON_TEXT_TITLE; // Payment Module title in Admin
         $this->description 		= 	MODULE_PAYMENT_PAYSON_TEXT_DESCRIPTION;

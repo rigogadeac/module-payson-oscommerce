@@ -4,7 +4,12 @@ Requirements:
 * Curl
 
 Changes that has been made since last version.
+------------------------------------
+Date: 2014-01-03, Version: 1.8
 
+*Fixed a bug that in some occasions the module couldnâ€™t handle the IPN responses.
+*Fixed that a message now can be transferred from the checkout window thru our payment process and to be placed in orders.
+*Have updated the installation description to a more detailed.
 ------------------------------------
 Date: 2013-09-13, Version: 1.7
 
@@ -16,7 +21,7 @@ Date: 2013-04-22, Version: 1.6
 * Invoice will not be available in checkout on purchases below 30SEK or for customers with a delivery address outside of sweden.
 * test mode
 * When selecting test mode the module will be using test credentials automatically 
-* Fixed problem with åäö in product description
+* Fixed problem with ï¿½ï¿½ï¿½ in product description
 * probem with the function ereg (This function has been DEPRECATED as of PHP 5.3.0).
 
 ------------------------------------
@@ -58,5 +63,5 @@ Date: 2011-02-13, Version: 1.1
 File: \includes\modules\payment\payson_payments_invoice.php
 ------------------------------------
 
-* Fixed problem with åäö in product description
+* Fixed problem with ï¿½ï¿½ï¿½ in product description
 * Added more content to Log email
