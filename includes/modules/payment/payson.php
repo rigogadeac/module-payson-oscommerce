@@ -7,7 +7,9 @@
  * @package paymentMethod
  * 
  */
+if(defined('PAYSON_ALREADY_LOADED_MODULE')) return;
 
+define('PAYSON_ALREADY_LOADED_MODULE', 1);
 
 /**
  *  ensure dependencies are loaded
@@ -506,7 +508,16 @@ class payson{
 			
 		return false;
 	}
-	
+	        function parseQuery($query) {
+            $ar = array();
+            $a = explode('&', $query);
+            foreach ($a as $k) {
+                $z = explode('=', $k);
+                $ar[$z[0]] = $z[1];
+            }
+            return $ar;
+        }
+        
 	function paysonTokenResponseValidate($paysonTokenResponse)
 	{
 		if(preg_match("/responseEnvelope.ack\=SUCCESS/i", $paysonTokenResponse))
